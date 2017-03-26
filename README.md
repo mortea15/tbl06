@@ -1,2 +1,3 @@
-# Group-6-Project
-Project Repository for Members of group 6
+# Group_Six_Project
+
+a [Sails](http://sailsjs.org) application
