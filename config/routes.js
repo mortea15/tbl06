@@ -33,8 +33,8 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'homepage'
-  }
+    view: 'music/index'
+  },
 
   /***************************************************************************
   *                                                                          *
@@ -45,5 +45,7 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
+
+  'GET /api/music': 'MusicController.getJson'
 
 };
