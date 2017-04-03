@@ -1,0 +1,81 @@
+.logo-font {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  line-height: 1.2;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.main-container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.aboutcard-container {
+  width: 600px;
+  margin: 0 auto;
+}
+
+/*
+Title
+ */
+.slogan {
+  font-size: 55px;
+  padding-top: 20px;
+}
+
+/*
+Subtitle
+ */
+.sub-slogan {
+  font-size: 15px;
+  padding-top: 5px;
+}
+
+/*
+Material Design Icons coloring
+ */
+.material-icons.md-dark {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+.material-icons.md-light {
+  color: rgba(255, 255, 255, 1);
+}
+
+.material-icons.md-light.md-inactive {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/*
+Box Shadows
+ */
+.search-field {
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
+}
+
+.result-shadow {
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
+}
+
+.about-shadow {
+  box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3);
+}
+
+/*
+Hidden containers (hidden by default, appears when triggered)
+ */
+.results-container {
+  display: none;
+}
+
+.searchProgress-container {
+  display: none;
+}
