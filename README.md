@@ -5,7 +5,7 @@ _musicMASH_, a cross-service search application to browse music through SoundClo
 
 Repository for a group project in the course ISQA-4380 at the University of Nebraska Omaha
 
-**Development branch for:** [Morten Amundsen.js](https://github.com/mortea15)
+Master Branch
 
 ## Get Started
 
