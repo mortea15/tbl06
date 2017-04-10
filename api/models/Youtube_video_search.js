@@ -9,6 +9,13 @@ module.exports = {
 
   attributes: {
 
-  }
+      attributes: {
+          Keyword: {
+              type: 'string',
+              required: true
+          }
+
+      }
+}
 };
 
