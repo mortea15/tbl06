@@ -7,12 +7,33 @@
 
 module.exports = {
 
-    'new': function(req, res) {
-        res.view();
+  //  'new': function(req, res) {
+//        res.view();
+  //  },
 
-    },
 
-    //create: function(req, res, next) {
+    // After the API loads, call a function to enable the search box.
+    'new': function handleAPILoaded() {
+    $('#search-button').attr('disabled', false);
+},
+
+// Search for a specified string.
+'new': function search() {
+    var q = $('#query').val();
+    var request = gapi.client.youtube.search.list({
+        q: q,
+        part: 'snippet'
+    });
+
+    request.execute(function(response) {
+        var str = JSON.stringify(response.result);
+        $('#search-container').html('<pre>' + str + '</pre>');
+    });
+ },
+
+
+
+//create: function(req, res, next) {
      //   Customer.create( req.params.all(), function customerCreated(err, customer) {
        //     if (err) return next(err);
          //   res.redirect('/customer/show/' + customer.id);
@@ -32,6 +53,6 @@ module.exports = {
         // Listen for sign-in state changes.
    //     GoogleAuth.isSignedIn.listen(updateSigninStatus);
   //  });
-}
+},
 };
 
