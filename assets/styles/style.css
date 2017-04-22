@@ -10,6 +10,11 @@
   margin: 0 auto;
 }
 
+.form-container {
+  width: 200px;
+  margin: 0 auto;
+}
+
 .center-text {
   text-align: center;
 }
@@ -33,6 +38,11 @@ Subtitle
 .sub-slogan {
   font-size: 15px;
   padding-top: 5px;
+}
+
+.form-font {
+  font-size: 18px;
+  font-color: white;
 }
 
 /*

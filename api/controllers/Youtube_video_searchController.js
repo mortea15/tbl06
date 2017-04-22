@@ -53,6 +53,6 @@ module.exports = {
         // Listen for sign-in state changes.
    //     GoogleAuth.isSignedIn.listen(updateSigninStatus);
   //  });
-},
+//},
 };
 
