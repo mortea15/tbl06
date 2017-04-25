@@ -1,13 +1,14 @@
 <!-- Scripts -->
+<!-- SoundCloud SDK -->
 <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+<!-- JQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/assets/js/dependencies/auth.js"></script>
+<!-- Auth for YouTube Data API -->
+<script src="assets/js/dependencies/auth.js"></script>
+<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
 
-<!-- SoundCloud Script -->
+<!-- SoundCloud API Script -->
 <script>
-    var SCLogo = "http://icons.iconarchive.com/icons/sicons/basic-round-social/512/soundcloud-icon.png";
-    var YTLogo = "https://www.jillwolcottknits.com/wp-content/uploads/2016/02/youtube-variation-round.png";
-    var SPTFYLogo = "http://pre14.deviantart.net/5e2b/th/pre/f/2015/245/9/b/new_spotify_icon_by_mattroxzworld-d98301o.png";
     $(document).ready(function () {
         // Initialize SoundCloud
         SC.initialize({
@@ -19,12 +20,11 @@
             SC.get('/tracks', {
                 q: $("#searchField").val(), limit: 5
             }).then(function (tracks) {
-                console.log(tracks.title);
-                var song = tracks[0];
+                var SCSong = tracks[0];
                 $("#resultList").show();
-                $("#SCTitle").text(song.title);
-                $("#SCDuration").text(millis_to_min_sec(song.duration));
-                $("#SCURL").attr("href", song.permalink_url);
+                $("#SCTitle").text(SCSong.title);
+                $("#SCDuration").text(millis_to_min_sec(SCSong.duration));
+                $("#SCURL").attr("href", SCSong.permalink_url);
             });
         });
     });
@@ -37,22 +37,66 @@
     }
 </script>
 
-<!-- YouTube Script -->
+<!-- YouTube API Script -->
 <script>
-    // Search for a specified string.
-    function search() {
+    $(document).ready(function googleAPIClientReady() {
+        gapi.client.setApiKey('700226523963-plhcrja6v4kp9buv2kdcn986tsent7rt');
+        gapi.client.load('youtube', 'v3', function() {
+            searchA();
+        });
+    })
+
+    $("#searchButton").click(function () {
         var q = $('#searchField').val();
         var request = gapi.client.youtube.search.list({
-            q: q,
+            q: qu,
             part: 'snippet',
             maxResults: 1
         });
 
-        request.execute(function(response) {
-            var str = JSON.stringify(response.result);
-            $('#search-container').html('<pre>' + str + '</pre>');
+        request.execute(function (response) {
+            YTSong = JSON.stringify(response.result);
+            alert(YTSong);
+            YTSong = JSON.parse(str);
+            alert(YTSong);
+
+            //$("#resultList").show();
+            //$("#YTTitle").text(YTSong.title);
+            //$("#YTDuration").text(millis_to_min_sec(YTSong.duration));
+            //$("#YTURL").attr("href", YTSong.permalink_url);
         });
-    }
+    })
+</script>
+
+<!-- Spotify API Script -->
+<script>
+    $(document).ready(function () {
+        // Initialize Spotify API
+        var Spotify = require('spotify-web-api-js');
+        var spotifyAPI = new Spotify();
+        spotifyAPI.setAccessToken('451d27d161bb4e068a7772eef5a8c02a');
+
+        // Get track matching the search
+        $("#searchButton").click(function () {
+                q: $("#searchField").val(), limit: 5
+            spotifyAPI.searchTracks(query)
+                .then(function (data) {
+                    $('#playing').text(data);
+                }, function (err) {
+                    console.log(err);
+                    $('#playing').text(err);
+
+                    var SPTSong = data[0];
+                    console.log(data[0]);
+                    $("#resultList").show();
+                    $("#SPTTitle").text(SPTSong.title);
+                    $("#SPTDuration").text(millis_to_min_sec(SPTSong.duration));
+                    $("#SPTURL").attr("href", SPTSong.permalink_url);
+                });
+            });
+        });
+    });
+
 </script>
 
 <!-- Main Container, defines 800px width -->
@@ -74,12 +118,15 @@
         Search
     </button>
 </div>
+<p>
+    You're listening to: <span id="playing"></span>
+</p>
 
 <br/>
 <hr>
 <!-- Results -->
 <div id="resultList" class="main-container result-shadow results-container">
-    <!-- Search result for SoundCloud -->
+    <!-- Search result for music -->
     <ul id="results" class="collection black-text">
         <!-- SoundCloud result -->
         <!-- SoundCloud Search API: https://developers.soundcloud.com/docs/api/guide#search -->
@@ -98,5 +145,41 @@
                class="secondary-content"><i class="material-icons">arrow_forward</i></a>
         </li>
         <!-- End of SoundCloud result -->
+
+        <!-- YouTube result -->
+        <!-- YouTube Search API: https://developers.google.com/youtube/v3/code_samples/javascript#search-by-keyword -->
+        <li id="YTResult" class="collection-item avatar">
+            <img id="YTProviderLogo"
+                 src="https://www.jillwolcottknits.com/wp-content/uploads/2016/02/youtube-variation-round.png"
+                 alt=""
+                 class="circle">
+            <!-- Song Title -->
+            <span id="YTTitle" class="title"></span>
+            <!-- Artist | Not applicable for YouTube results, as they have no unique field for artist -->
+            <p id="YTDuration">
+            </p>
+            <!-- Link to track -->
+            <a id="YTURL" href="" target="_blank"
+               class="secondary-content"><i class="material-icons">arrow_forward</i></a>
+        </li>
+        <!-- End of YouTube result -->
+
+        <!-- Spotify result -->
+        <!-- Spotify Search API: https://developers.google.com/youtube/v3/code_samples/javascript#search-by-keyword -->
+        <li id="SPTResult" class="collection-item avatar">
+            <img id="SPTProviderLogo"
+                 src="http://pre14.deviantart.net/5e2b/th/pre/f/2015/245/9/b/new_spotify_icon_by_mattroxzworld-d98301o.png"
+                 alt=""
+                 class="circle">
+            <!-- Song Title -->
+            <span id="SPTTitle" class="title"></span>
+            <!-- Artist -->
+            <p id="SPTDuration">
+            </p>
+            <!-- Link to track -->
+            <a id="SPTURL" href="" target="_blank"
+               class="secondary-content"><i class="material-icons">arrow_forward</i></a>
+        </li>
+        <!-- End of Spotify result -->
     </ul>
 </div>
