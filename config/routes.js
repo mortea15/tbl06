@@ -37,6 +37,7 @@ module.exports.routes = {
     'get /login': {view: 'user/login'},
     'get /signup': {view: 'user/signup'},
     '/about': {view: 'about/index'},
+    '/results': {view: 'soundcloud/result'},
 
     // Endpoints
     'post /login': 'UserController.login',
@@ -44,7 +45,7 @@ module.exports.routes = {
     '/logout': 'UserController.logout',
 
     /*'/': {
-     view: 'music/index'
+     view: 'soundcloud/index'
      },*/
 
     /***************************************************************************
@@ -57,6 +58,7 @@ module.exports.routes = {
      *                                                                          *
      ***************************************************************************/
 
-    'GET /api/music': 'MusicController.getJson'
+    'GET /api/music': 'MusicController.getJson',
+    'GET /api/soundcloud': 'SoundCloudController.getJson'
 
 };
