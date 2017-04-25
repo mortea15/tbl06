@@ -13,11 +13,6 @@ module.exports = {
           required: true
       },
 
-      duration: {
-        type: 'string',
-          required: true
-      },
-
       logo: {
         type: 'text',
           defaultsTo: 'http://icons.iconarchive.com/icons/sicons/basic-round-social/512/soundcloud-icon.png'
