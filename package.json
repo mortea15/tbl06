@@ -6,6 +6,7 @@
   "keywords": [],
   "dependencies": {
     "ejs": "2.3.4",
+    "gapi-client": "0.0.3",
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "1.0.0",
     "grunt-contrib-coffee": "1.0.0",
@@ -25,6 +26,8 @@
     "sails": "~0.12.13",
     "sails-disk": "~0.10.9",
     "sails-mysql": "^0.11.5",
+    "spotify-web-api-js": "^0.21.2",
+    "spotify-web-api-node": "^2.3.6",
     "sails-postgresql": "^0.11.4"
   },
   "scripts": {

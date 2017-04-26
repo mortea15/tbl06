@@ -1,135 +1,120 @@
+<!-- Scripts -->
+
+<!-- APIs Used -->
+<!-- SoundCloud SDK + API -->
+<script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+<script src="assets/js/soundcloud.js"></script>
+<!-- YouTube Data API -->
+<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+<script src="assets/js/youtube.js"></script>
+<!-- Spotify Web API -->
+<script src="assets/js/spotify.js"></script>
+<!-- MusixMatch API -->
+<script type="text/javascript" src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"></script>
+
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- End of Scripts -->
+
 <!-- Main Container, defines 800px width -->
 <div class="main-container center-text">
-  <!-- Header and sub-header -->
-  <div class="logo-font slogan">browse it all. right here.</div>
-  <div class="logo-font sub-slogan">Search for your favorite tunes on SoundCloud, Spotify & YouTube!</div>
-  <br>
-  <!-- Search field -->
-  <div class="card-panel white search-field">
-    <form onsubmit="searchingResults()" action="#">
-      <div class="input-field" style="color:black">
-        <i class="material-icons prefix search-icon" style="bottom: 4px;">search</i>
-        <input name="search" id="icon_prefix" type="text" class="validate black-text" style="color: #00000; font-size: 20px;">
-      </div>
-    </form>
-  </div>
-</div>
-<br>
+    <!-- Header and sub-header -->
+    <div class="logo-font slogan">all music in one place</div>
+    <div class="logo-font sub-slogan">Search for your favorite tunes on SoundCloud, Spotify & YouTube!</div>
+    <br>
+    <!-- Search field -->
+    <div class="card-panel white search-field">
+        <div class="input-field" style="color:black">
+            <i class="material-icons prefix search-icon" style="bottom: 4px;">search</i>
+            <input name="searchField" id="searchField" type="text" class="validate black-text"
+                   style="color: #00000; font-size: 20px;">
+        </div>
+    </div>
+    <button type="submit" id="searchButton"
+            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  pink lighten-3 white-text about-shadow">
+        Search
+    </button>
 
-<!-- Loading progress spinner for visual feedback while loading results -->
-<div id="searchSpinner" class="preloader-wrapper big active main-container searchProgress-container">
-  <div class="spinner-layer spinner-blue">
-    <div class="circle-clipper left">
-      <div class="circle"></div>
-    </div>
-    <div class="gap-patch">
-      <div class="circle"></div>
-    </div>
-    <div class="circle-clipper right">
-      <div class="circle"></div>
-    </div>
-  </div>
 </div>
 
-<!-- Hidden by default, appears when a search is submitted -->
+<br/>
+<hr>
+<!-- Results -->
 <div id="resultList" class="main-container result-shadow results-container">
-  <!-- Search results -->
-  <ul class="collection">
-    <!-- SoundCloud result -->
-    <!-- SoundCloud Search API: https://developers.soundcloud.com/docs/api/guide#search -->
-    <li class="collection-item avatar">
-      <img id="providerLogo" src="http://icons.iconarchive.com/icons/sicons/basic-round-social/512/soundcloud-icon.png"
-           alt=""
-           class="circle">
-      <!-- Song Title -->
-      <span class="title">Smile Like You Mean It</span>
-      <!-- Artist -->
-      <p>The Killers <br>
-        <!-- Length -->
-        3:48
-      </p>
-      <!-- Link to track -->
-      <a href="https://soundcloud.com/fernando-jos-3/smile-like-you-mean-it-the-killers" target="_blank"
-         class="secondary-content"><i class="material-icons">arrow_forward</i></a>
-    </li>
-    <!-- End of SoundCloud result -->
+    <!-- Search result for music -->
+    <ul id="results" class="collection black-text">
+        <!-- SoundCloud result -->
+        <!-- SoundCloud Search API: https://developers.soundcloud.com/docs/api/guide#search -->
+        <li id="SCResult" class="collection-item avatar">
+            <img id="SCProviderLogo"
+                 src="http://icons.iconarchive.com/icons/sicons/basic-round-social/512/soundcloud-icon.png"
+                 alt=""
+                 class="circle">
+            <!-- Song Title -->
+            <span id="SCTitle" class="title"></span>
+            <!-- Artist | Not applicable for SoundCloud results, as they have no unique field for artist -->
+            <p id="SCDuration">
+            </p>
+            <!-- Link to track -->
+            <a id="SCURL" href="" target="_blank"
+               class="secondary-content"><i class="material-icons">arrow_forward</i></a>
+        </li>
+        <!-- End of SoundCloud result -->
 
-    <!-- YouTube result -->
-    <!-- YouTube Search API: https://github.com/google/google-api-nodejs-client/blob/master/samples/youtube/search.js -->
-    <li class="collection-item avatar">
-      <img id="providerLogo"
-           src="https://www.jillwolcottknits.com/wp-content/uploads/2016/02/youtube-variation-round.png" alt=""
-           class="circle">
-      <!-- Song Title -->
-      <span class="title">Smile Like You Mean It</span>
-      <!-- Artist -->
-      <p>The Killers <br>
-        <!-- Length -->
-        3:47
-      </p>
-      <!-- Link to track -->
-      <a href="https://www.youtube.com/watch?v=l1p_NHFd8jM" target="_blank" class="secondary-content"><i
-                class="material-icons">arrow_forward</i></a>
-    </li>
-    <!-- End of YouTube result -->
+        <!-- YouTube result -->
+        <!-- YouTube Search API: https://developers.google.com/youtube/v3/code_samples/javascript#search-by-keyword -->
+        <li id="YTResult" class="collection-item avatar">
+            <img id="YTProviderLogo"
+                 src="https://www.jillwolcottknits.com/wp-content/uploads/2016/02/youtube-variation-round.png"
+                 alt=""
+                 class="circle">
+            <!-- Song Title -->
+            <span id="YTTitle" class="title"></span>
+            <!-- Artist | Not applicable for YouTube results, as they have no unique field for artist -->
+            <p id="YTDuration">
+            </p>
+            <!-- Link to track -->
+            <a id="YTURL" href="" target="_blank"
+               class="secondary-content"><i class="material-icons">arrow_forward</i></a>
+        </li>
+        <!-- End of YouTube result -->
 
-    <!-- Spotify result -->
-    <!-- Spotify Search API: https://github.com/thelinmichael/spotify-web-api-node -->
-    <li class="collection-item avatar">
-      <img id="providerLogo"
-           src="http://pre14.deviantart.net/5e2b/th/pre/f/2015/245/9/b/new_spotify_icon_by_mattroxzworld-d98301o.png"
-           alt=""
-           class="circle">
-      <!-- Song Title -->
-      <span class="title">Smile Like You Mean It</span>
-      <!-- Artist -->
-      <p>The Killers <br>
-        <!-- Length -->
-        3:54
-      </p>
-      <!-- Link to track -->
-      <a href="https://play.spotify.com/track/4kAgnAL4WKx7YqnlL2fvMh" target="_blank" class="secondary-content"><i
-                class="material-icons">arrow_forward</i></a>
-    </li>
-    <!-- End of Spotify result -->
-  </ul>
+        <!-- Spotify result -->
+        <!-- Spotify Search API: https://developers.google.com/youtube/v3/code_samples/javascript#search-by-keyword -->
+        <li id="SPTResult" class="collection-item avatar">
+            <img id="SPTProviderLogo"
+                 src="http://pre14.deviantart.net/5e2b/th/pre/f/2015/245/9/b/new_spotify_icon_by_mattroxzworld-d98301o.png"
+                 alt=""
+                 class="circle">
+            <!-- Song Title -->
+            <span id="SPTTitle" class="title"></span>
+            <!-- Artist -->
+            <p id="SPTArtist">
+            </p>
+            <!-- Duration -->
+            <p id="SPTDuration">
+            </p>
+            <!-- Link to track -->
+            <a id="SPTURL" href="" target="_blank"
+               class="secondary-content"><i class="material-icons">arrow_forward</i></a>
+        </li>
+        <!-- End of Spotify result -->
 
-  <!-- Scripts -->
-  <script>
-      // Display loading spinner, then call method to display resultList
-      function searchingResults() {
-          // Checks if its visible (if a list is displayed), hides it if true
-          if (document.getElementById('resultList').style.display == 'block') {
-              hideResults('resultList');
-          }
-          document.getElementById('searchSpinner').style.display = 'block';
-          // Hides spinner, displays resultList
-          // Hardcoded to appear 3 seconds after being called.
-          setInterval(function displayResults() {
-              document.getElementById('searchSpinner').style.display = 'none';
-              document.getElementById('resultList').style.display = 'block';
-          }, 3000);
-      }
-      ;
-
-      // Hides the target from the page
-      function hideResults(target) {
-          document.getElementById(target).style.display = 'none';
-      }
-      ;
-
-      // Function to find out what provider is listed, and set it's icon/logo
-      function setProviderLogo(provider) {
-          if (provider == "SoundCloud") {
-              document.getElementById('providerLogo').src = 'http://icons.iconarchive.com/icons/sicons/basic-round-social/512/soundcloud-icon.png';
-          } else if (provider == "YouTube") {
-              document.getElementById('providerLogo').src = 'https://www.jillwolcottknits.com/wp-content/uploads/2016/02/youtube-variation-round.png';
-          } else if (provider == "Spotify") {
-              document.getElementById('providerLogo').src = 'http://pre14.deviantart.net/5e2b/th/pre/f/2015/245/9/b/new_spotify_icon_by_mattroxzworld-d98301o.png';
-          } else {
-              document.getElementById('providerLogo').src = '';
-          }
-      }
-  </script>
+        <!-- MusixMatch result -->
+        <!-- MusixMatch Search API: https://developer.musixmatch.com/documentation/api-reference/track-search -->
+        <!-- MusixMatch Song Lyric Lookup API: https://developer.musixmatch.com/documentation/api-reference/track-lyrics-get -->
+        <li id="MMResult" class="collection-item avatar">
+            <img id="MMProviderLogo"
+                 src="https://lh4.ggpht.com/yrUJPyt4kgNtLTnWK42fHteubCfllwm-Hk0uDut2jQr96mkch4-uNwEoQXwVIEtmUeGd=w300"
+                 alt=""
+                 class="circle">
+            <!-- Song Title -->
+            <span id="MMTitle" class="title"></span>
+            <!-- Preview of Lyrics -->
+            <p id="MMLyricsPreview">
+            </p>
+        </li>
+        <!-- End of Spotify result -->
+    </ul>
 </div>
-

@@ -74,11 +74,11 @@ module.exports.connections = {
   *                                                                          *
   *                                                                          *
   ***************************************************************************/
-  heroku_postgres: {
-     adapter: 'sails-postgresql',
-    url: process.env.DATABASE_URL, //aouto set bu heroku
-      ssl: false
-  }
+  //heroku_postgres: {
+  //   adapter: 'sails-postgresql',
+  //  url: process.env.DATABASE_URL, //aouto set bu heroku
+  //    ssl: false
+  //}
 
 
   /***************************************************************************
