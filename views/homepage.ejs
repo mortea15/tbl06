@@ -1,84 +1,26 @@
 <!-- Scripts -->
-<!-- SoundCloud SDK -->
+
+<!-- APIs Used -->
+<!-- SoundCloud SDK + API -->
 <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
-<!-- JQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="assets/js/soundcloud.js"></script>
 <!-- YouTube Data API -->
 <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+<script src="assets/js/youtube.js"></script>
+<!-- Spotify Web API -->
+<script src="assets/js/spotify.js"></script>
+<!-- MusixMatch API -->
+<script type="text/javascript" src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"></script>
 
-<!-- SoundCloud API Script -->
-<script>
-    $(document).ready(function () {
-        // Initialize SoundCloud
-        SC.initialize({
-            client_id: 'O3UkayfZTJjNeahVhqTiHcZ5iowrMRpk'
-        });
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-        // Get track matching the search
-        // Search for tracks only, and limit the search to 5 results
-        $("#searchButton").click(function () {
-            SC.get('/tracks', {
-                q: $("#searchField").val(), limit: 5
-            }).then(function (tracks) {
-                var SCSong = tracks[0];                                       // Store the first result in a variable
-                $("#resultList").show();                                      // Display the list after a search is done
-                $("#SCTitle").text(SCSong.title);                             // Title & Artist of the track
-                $("#SCDuration").text(millis_to_min_sec(SCSong.duration));    // Duration of track
-                $("#SCURL").attr("href", SCSong.permalink_url);               // URL to track
-            });
-        });
-    });
-
-    // Convert milliseconds to MM:SS format (minutes:seconds)
-    function millis_to_min_sec(millis) {
-        var minutes = Math.floor(millis / 60000);
-        var seconds = ((millis % 60000) / 1000).toFixed(0);
-        return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
-    }
-</script>
-<!-- End of SoundCloud API Script -->
-
-<!-- YouTube API Script -->
-<script>
-    //$("#resultList").show();
-    //$("#YTTitle").text(YTSong.title);
-    //$("#YTDuration").text(millis_to_min_sec(YTSong.duration));
-    //$("#YTURL").attr("href", YTSong.permalink_url);
-</script>
-<!-- End of YouTube API Script -->
-
-<!-- Spotify API Script -->
-<script>
-    $(document).ready(function () {
-        var searchTracks = function (query) {
-            $.ajax({
-                url: 'https://api.spotify.com/v1/search',
-                data: {
-                    q: query,
-                    type: 'track',
-                    limit: 5
-                },
-                success: function (response) {
-                    var SPTSong = response.tracks.items[0];                                     // Store the first result in a variable
-                    $('#resultlist').show();                                                    // Display the list after a search is done
-                    $('#SPTTitle').text(SPTSong.name);                                          // Title of the track
-                    $('#SPTArtist').text(SPTSong.artists[0].name);                              // Artists is an array containing one or more objects, but we'll take the first one and display that no matter what
-                    $('#SPTDuration').text(millis_to_min_sec(SPTSong.duration_ms));             // Duration of track
-                    $('#SPTURL').attr("href", SPTSong.external_urls.spotify);                   // URL to track
-                }
-            });
-        };
-        $("#searchButton").click(function () {
-            searchTracks($('#searchField').val());
-        })
-    })
-</script>
-<!-- End of Spotify API Script -->
+<!-- End of Scripts -->
 
 <!-- Main Container, defines 800px width -->
 <div class="main-container center-text">
     <!-- Header and sub-header -->
-    <div class="logo-font slogan">browse it all. right here.</div>
+    <div class="logo-font slogan">all music in one place</div>
     <div class="logo-font sub-slogan">Search for your favorite tunes on SoundCloud, Spotify & YouTube!</div>
     <br>
     <!-- Search field -->
@@ -93,6 +35,7 @@
             class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  pink lighten-3 white-text about-shadow">
         Search
     </button>
+
 </div>
 
 <br/>
@@ -155,6 +98,22 @@
             <!-- Link to track -->
             <a id="SPTURL" href="" target="_blank"
                class="secondary-content"><i class="material-icons">arrow_forward</i></a>
+        </li>
+        <!-- End of Spotify result -->
+
+        <!-- MusixMatch result -->
+        <!-- MusixMatch Search API: https://developer.musixmatch.com/documentation/api-reference/track-search -->
+        <!-- MusixMatch Song Lyric Lookup API: https://developer.musixmatch.com/documentation/api-reference/track-lyrics-get -->
+        <li id="MMResult" class="collection-item avatar">
+            <img id="MMProviderLogo"
+                 src="https://lh4.ggpht.com/yrUJPyt4kgNtLTnWK42fHteubCfllwm-Hk0uDut2jQr96mkch4-uNwEoQXwVIEtmUeGd=w300"
+                 alt=""
+                 class="circle">
+            <!-- Song Title -->
+            <span id="MMTitle" class="title"></span>
+            <!-- Preview of Lyrics -->
+            <p id="MMLyricsPreview">
+            </p>
         </li>
         <!-- End of Spotify result -->
     </ul>
