@@ -1,7 +1,7 @@
 # musicMASH (working name) - Node/Sails :sailboat:
 
 ## About
-_musicMASH_, a cross-service search application to browse music through SoundCloud, Spotify, and YouTube.
+_musicMASH_, a cross-service search application to browse music through SoundCloud, Spotify, and YouTube, as well as get lyrics from MusixMatch
 
 Repository for a group project in the course ISQA-4380 at the University of Nebraska Omaha
 
