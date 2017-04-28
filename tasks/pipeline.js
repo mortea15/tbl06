@@ -30,7 +30,10 @@ var jsFilesToInject = [
 
   // Dependencies like jQuery, or Angular are brought in here
   'js/dependencies/**/*.js',
-
+  'js/musixmatch.js',
+  'js/youtube.js',
+  'js/spotify.js',
+  'js/soundcloud.js',
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
   'js/**/*.js'

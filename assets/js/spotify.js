@@ -21,6 +21,7 @@ $(document).ready(function () {
             }
         });
     };
+    // When the searchButton is clicked, run the searchTracks-function with the value of the searchField as a parameter
     $("#searchButton").click(function () {
         searchTracks($('#searchField').val());
     });
