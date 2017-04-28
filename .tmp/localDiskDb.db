@@ -1,0 +1,100 @@
+{
+  "data": {
+    "about": [],
+    "soundcloud": [
+      {
+        "title": "welcome to the jungle",
+        "logo": "http://icons.iconarchive.com/icons/sicons/basic-round-social/512/soundcloud-icon.png",
+        "createdAt": "2017-04-27T22:24:56.364Z",
+        "updatedAt": "2017-04-27T22:24:56.364Z",
+        "id": 1
+      },
+      {
+        "title": "smile like you mean it",
+        "logo": "http://icons.iconarchive.com/icons/sicons/basic-round-social/512/soundcloud-icon.png",
+        "createdAt": "2017-04-27T22:34:32.479Z",
+        "updatedAt": "2017-04-27T22:34:32.479Z",
+        "id": 2
+      }
+    ],
+    "user": [
+      {
+        "name": "Ryan Schuetzler",
+        "email": "rschuetzler@unomaha.edu",
+        "password": "Password",
+        "createdAt": "2017-04-27T18:15:54.080Z",
+        "updatedAt": "2017-04-27T18:15:54.080Z",
+        "id": 1
+      }
+    ]
+  },
+  "schema": {
+    "about": {
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "soundcloud": {
+      "title": {
+        "type": "string"
+      },
+      "logo": {
+        "type": "text",
+        "defaultsTo": "http://icons.iconarchive.com/icons/sicons/basic-round-social/512/soundcloud-icon.png"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "user": {
+      "email": {
+        "type": "string"
+      },
+      "password": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    }
+  },
+  "counters": {
+    "about": {},
+    "soundcloud": {
+      "id": 2
+    },
+    "user": {
+      "id": 1
+    }
+  }
+}
