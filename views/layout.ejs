@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>MusicMASH - Search music across services</title>
+    <title>TBL06 - Docker & API Demo</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css"/>
     <link rel="stylesheet"
@@ -59,20 +59,17 @@
     <header class="mdl-layout__header mdl-layout__header--transparent">
         <div class="mdl-layout__header-row">
             <!-- Title -->
-            <span class="mdl-layout-title">musicMASH</span>
+            <span class="mdl-layout-title">TBL06 - Docker & API Demo</span>
             <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation -->
             <nav class="mdl-navigation">
                 <% if (req.session.me) { %>
                 <a class="mdl-navigation__link" href="/">Home</a>
-                <a class="mdl-navigation__link" href="/about">About Us</a>
-                <a class="mdl-navigation__link" href="/logout">Log Out</a>
                 <% } else { %>
                 <a class="mdl-navigation__link" href="/login">Sign In</a>
-                <a class="mdl-navigation__link" href="/signup">Sign Up</a>
+                <a class="mdl-navigation__link" href="/signup">Register</a>
                 <a class="mdl-navigation__link" href="/">Home</a>
-                <a class="mdl-navigation__link" href="/about">About Us</a>
                 <% } %>
                 <div class="mdl-navigation__link mdl-textfield mdl-js-textfield mdl-textfield--expandable
                   mdl-textfield--floating-label mdl-textfield--align-right">
@@ -89,17 +86,14 @@
         </div>
     </header>
     <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">musicMASH</span>
+        <span class="mdl-layout-title">TBL06</span>
         <nav class="mdl-navigation">
             <% if (req.session.me) { %>
             <a class="mdl-navigation__link" href="/">Home</a>
-            <a class="mdl-navigation__link" href="/about">About Us</a>
-            <a class="mdl-navigation__link" href="/logout">Log Out</a>
             <% } else { %>
             <a class="mdl-navigation__link" href="/login">Sign In</a>
-            <a class="mdl-navigation__link" href="/signup">Sign Up</a>
+            <a class="mdl-navigation__link" href="/signup">Register</a>
             <a class="mdl-navigation__link" href="/">Home</a>
-            <a class="mdl-navigation__link" href="/about">About Us</a>
             <% } %>
         </nav>
     </div>
@@ -161,7 +155,6 @@
         <script src="/js/dependencies/auth.js"></script>
         <script src="/js/musixmatch.js"></script>
         <script src="/js/youtube.js"></script>
-        <script src="/js/spotify.js"></script>
         <script src="/js/soundcloud.js"></script>
         <script src="/js/third-party/jquery-2.1.1.min.js"></script>
         <script src="/js/third-party/material.js"></script>
@@ -173,10 +166,7 @@
     </main>
     <footer class="mdl-mini-footer">
         <div class="mdl-mini-footer__left-section">
-            <div class="mdl-logo">© 2017 musicMASH</div>
-            <ul class="mdl-mini-footer__link-list">
-                <li><a href="/about">About Us</a></li>
-            </ul>
+            <div class="mdl-logo">TBL06 - Docker & API Demo</div>
         </div>
     </footer>
 </div>

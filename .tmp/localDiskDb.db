@@ -23,8 +23,9 @@
         "email": "rschuetzler@unomaha.edu",
         "password": "Password",
         "createdAt": "2017-04-27T18:15:54.080Z",
-        "updatedAt": "2017-04-27T18:15:54.080Z",
-        "id": 1
+        "updatedAt": "2017-10-25T17:43:07.710Z",
+        "id": 1,
+        "group": "1"
       }
     ]
   },

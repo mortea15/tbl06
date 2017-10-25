@@ -1,8 +1,8 @@
 {
-  "name": "musicMASH",
+  "name": "tbl06",
   "private": true,
   "version": "0.0.1",
-  "description": "A cross-service search engine for browsing music through SoundCloud, Spotify and YouTube",
+  "description": "A cross-service search engine for browsing music through SoundCloud and YouTube",
   "keywords": [],
   "dependencies": {
     "connect-redis": "3.0.2",
@@ -38,7 +38,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://https://github.com/Bathoin/Group-6-Project.git"
+    "url": "git://https://github.com/mortea15/tbl06.git"
   },
   "author": "mortea15",
   "license": "GPL-3.0"

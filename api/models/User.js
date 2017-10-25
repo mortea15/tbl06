@@ -8,15 +8,11 @@
 module.exports = {
 
     attributes: {
-        email: {
-            type: 'email',
-            required: true
-        },
-        password: {
+        name: {
             type: 'string',
             required: true
         },
-        name: {
+        group: {
             type: 'string',
             required: true
         }
@@ -24,13 +20,11 @@ module.exports = {
 
 
     /**
-     * Create a new user using the provided inputs,
-     * but encrypt the password first.
+     * Create a new user using the provided inputs
      *
      * @param  {Object}   inputs
      *                     • name     {String}
-     *                     • email    {String}
-     *                     • password {String}
+     *                     • group    {String}
      * @param  {Function} cb
      */
 
@@ -38,14 +32,10 @@ module.exports = {
         // Create a user
         User.create({
             name: inputs.name,
-            email: inputs.email,
-            // TODO: But encrypt the password first
-            password: inputs.password
+            group: inputs.group
         })
             .exec(cb);
     },
-
-
 
     /**
      * Check validity of a login using the provided inputs.
@@ -60,9 +50,8 @@ module.exports = {
     attemptLogin: function (inputs, cb) {
         // Create a user
         User.findOne({
-            email: inputs.email,
-            // TODO: But encrypt the password first
-            password: inputs.password
+            name: inputs.name,
+            group: inputs.group
         })
             .exec(cb);
     }

@@ -1,9 +1,7 @@
-# [musicMASH](http://musicmash.us:1337/) - Node/Sails :sailboat:
+# [TBL06](158.39.75.66:1337) - Node/Sails :sailboat:
 
 ## About
-_musicMASH_, a cross-service search application to browse music through SoundCloud, Spotify, and YouTube, as well as get lyrics from MusixMatch
-
-Repository for a group project in the course ISQA-4380 at the University of Nebraska Omaha
+A Docker/container/API demonstration for the course IS-308 // Internet Technologies, made by group 1.
 
 ## Get Started
 
@@ -11,7 +9,6 @@ Repository for a group project in the course ISQA-4380 at the University of Nebr
 - Sails.js
 - [Googles Material Design CSS, JavaScript & Icons](https://getmdl.io/)
 - [MaterializeCSS CSS & JavaScript](http://materializecss.com/)
-- Spotify API
 - YouTube API
 - SoundCloud API
 - MusixMatch API

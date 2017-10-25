@@ -1,8 +1,8 @@
 /**
  * res.login([inputs])
  *
- * @param {String} inputs.username
- * @param {String} inputs.password
+ * @param {String} inputs.name
+ * @param {String} inputs.group
  *
  * @description :: Log the requesting user in using a passport strategy
  * @help        :: See http://links.sailsjs.org/docs/responses
@@ -17,8 +17,8 @@ module.exports = function login(inputs) {
 
     // Look up the user
     User.attemptLogin({
-        email: inputs.email,
-        password: inputs.password
+        name: inputs.name,
+        group: inputs.group
     }, function (err, user) {
         if (err) return res.negotiate(err);
         if (!user) {
@@ -27,7 +27,7 @@ module.exports = function login(inputs) {
             // send a 200 response letting the user agent know the login was successful.
             // (also do this if no `invalidRedirect` was provided)
             if (req.wantsJSON || !inputs.invalidRedirect) {
-                return res.badRequest('Invalid username/password combination.');
+                return res.badRequest('Invalid name/group combination.');
             }
             // Otherwise if this is an HTML-wanting browser, redirect to /login.
             return res.redirect(inputs.invalidRedirect);
