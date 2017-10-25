@@ -1,13 +1,15 @@
-FROM node
+FROM node:7-alpine
 
-RUN npm install -g sails
-
-RUN mkdir /application
+RUN mkdir -p /application
 
 WORKDIR /application
 
-EXPOSE 1337
+COPY package.json /application/package.json
 
 RUN npm install
 
-CMD ["npm", "start" ]
+COPY . /application
+
+EXPOSE 1337
+
+CMD [ "npm", "start" ]
