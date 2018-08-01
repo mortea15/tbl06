@@ -4,7 +4,7 @@
 
 <!-- YouTube API Script -->
 // Our private api key
-var gapikey = 'AIzaSyAZHtMJkHY2Rc-Ag8VkdXAizCtdkwvfQ8A';
+var gapikey = '';
 $(document).ready(function () {
     var search = function (query) {
         $.ajax({
